@@ -1,5 +1,37 @@
 .App {
+  width: 100%;
+  min-height: 100vh;
   text-align: center;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn{
+  padding: 10px 15px;
+  border: 1px solid black;
+  border-radius: 90px;
+  font-size: 20px;
+  font-weight: 600;
+  background-color: transparent;
+  margin-right: 10px;
+}
+
+.btn:hover{
+  background-color: black;
+  border: 1px solid white;
+  transition: 0.3s ease-in-out;
+ color: white;
+ box-shadow: 0px 0px 10px #aaa;
+}
+
+.main-heading{
+  font-size: 40px;
+  background:linear-gradient(45deg,magenta,blue);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
 }
 
 .App-logo {
