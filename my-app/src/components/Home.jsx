@@ -15,11 +15,11 @@ function Home() {
     <div>
         <h1 className="main-heading">Welcome User!</h1>
 
-        <h2>If you are new to this website kindly Register</h2>
-        <h2>If you have already registered kindly Log In</h2>
-
         <button className="btn" onClick={LoginPage}>Login</button>
         <button className="btn" onClick={RegisterPage}>Register</button>
+        <button className="btn" onClick={()=> router("/use-state")}>Use State Page</button>
+        <button className="btn" onClick={()=> router("/use-effect")}>Use Effect Page</button>
+        <button className="btn" onClick={()=> router("/use-params")}>Use Params Page</button>
     </div>
 )
 

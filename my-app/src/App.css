@@ -5,7 +5,7 @@
   background-color: white;
   display: flex;
   justify-content: center;
-  align-items: center;
+  /* align-items: center; */
 }
 
 .btn{
@@ -27,11 +27,22 @@
 }
 
 .main-heading{
+  /* width: 100%; */
   font-size: 40px;
-  background:linear-gradient(45deg,magenta,blue);
+  background-image:linear-gradient(-30deg,magenta,blue);
+  background-size: 200%;
   background-clip: text;
   -webkit-background-clip: text;
-  color: transparent;
+  color: #000;
+  /* -webkit-text-fill-color: transparent; */
+  animation: text-animation 3s linear infinite;
+  /* transition: 3s ease-in-out; */
+}
+
+@keyframes text-animation {
+ 100%{
+    background-position: 200% ;
+  }
 }
 
 .App-logo {
