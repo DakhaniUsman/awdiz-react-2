@@ -19,6 +19,7 @@ function App() {
         <Route path='/use-effect' element={<UseEffect />} />
         <Route path='/use-params' element={<UseParams />} />
         <Route path='/use-params-product/:id' element={<UseParamsProduct />} />
+        <Route path='/props' element={<Props />} />
       </Routes>
     </div>
   );
