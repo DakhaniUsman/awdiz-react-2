@@ -13,8 +13,10 @@ const UseParams = () => {
 
             <h1>Use Params Page</h1>
 
-            {numbers.map((num)=>(
-                <button className="btn" onClick={()=> router(`/use-params-product/${num}`)}>Page {num}</button>
+            {numbers.map((num,i)=>(
+    
+                console.log(i + 1),
+                <button key={i + 1} className="btn" onClick={()=> router(`/use-params-product/${num}`)}>Page {num}</button>
             ))}
 
             {/* <button className="btn" onClick={() => { router("/use-params/2") }}>Page 2</button>
