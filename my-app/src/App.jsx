@@ -7,8 +7,14 @@ import UseState from './components/Day-03/UseState';
 import UseEffect from './components/Day-03/USeEffect';
 import UseParams from './components/Day-03/UseParams';
 import UseParamsProduct from './components/Day-03/UseParamsProduct';
+import { useState } from 'react';
+import Props from './components/Day-04/Props';
+import Todo from './components/Day-04/ToDo';
+import NewTodo from './components/Day-04/NewTodo';
 
 function App() {
+  const [counter,setCounter] = useState(0); 
+
   return (
     <div className="App">
       <Routes>
@@ -19,7 +25,9 @@ function App() {
         <Route path='/use-effect' element={<UseEffect />} />
         <Route path='/use-params' element={<UseParams />} />
         <Route path='/use-params-product/:id' element={<UseParamsProduct />} />
-        <Route path='/props' element={<Props />} />
+        <Route path='/props' element={<Props counter={counter} setCounter={setCounter}/>} />
+        <Route path="/todo" element={<Todo /> } />
+        <Route path="/newtodo" element={<NewTodo /> } />
       </Routes>
     </div>
   );
