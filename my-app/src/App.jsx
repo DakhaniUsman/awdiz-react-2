@@ -1,4 +1,4 @@
-import { Route, Routes } from 'react-router-dom';
+import { Form, Route, Routes } from 'react-router-dom';
 import './App.css';
 import Home from './components/Home';
 import Login from './components/Login';
@@ -11,6 +11,7 @@ import { useState } from 'react';
 import Props from './components/Day-04/Props';
 import Todo from './components/Day-04/ToDo';
 import NewTodo from './components/Day-04/NewTodo';
+import FormPage from './components/Day-05/FormPage';
 
 function App() {
   const [counter,setCounter] = useState(0); 
@@ -28,6 +29,7 @@ function App() {
         <Route path='/props' element={<Props counter={counter} setCounter={setCounter}/>} />
         <Route path="/todo" element={<Todo /> } />
         <Route path="/newtodo" element={<NewTodo /> } />
+        <Route path='/formpage' element={<FormPage />} />
       </Routes>
     </div>
   );

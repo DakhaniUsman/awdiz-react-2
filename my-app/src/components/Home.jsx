@@ -22,6 +22,7 @@ function Home() {
         <button className="btn" onClick={()=> router("/use-params")}>Use Params Page</button>
         <button className="btn" onClick={()=> router("/props")}>Props Page</button>
         <button className="btn" onClick={()=> router("/todo")}>ToDo</button>
+        <button className="btn" onClick={()=> router("/formpage")}>Form Page</button>
     </div>
 )
 
