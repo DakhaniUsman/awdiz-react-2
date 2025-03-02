@@ -12,6 +12,8 @@ import Props from './components/Day-04/Props';
 import Todo from './components/Day-04/ToDo';
 import NewTodo from './components/Day-04/NewTodo';
 import FormPage from './components/Day-05/FormPage';
+import UseMemo from './components/Day-06/UseMemo';
+import UseCallback from './components/Day-06/UseCallback';
 
 function App() {
   const [counter,setCounter] = useState(0); 
@@ -30,6 +32,8 @@ function App() {
         <Route path="/todo" element={<Todo /> } />
         <Route path="/newtodo" element={<NewTodo /> } />
         <Route path='/formpage' element={<FormPage />} />
+        <Route path='/use-memo' element={<UseMemo />} />
+        <Route path='/use-callback' element={<UseCallback />} />
       </Routes>
     </div>
   );
