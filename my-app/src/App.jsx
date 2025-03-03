@@ -12,12 +12,11 @@ import Props from './components/Day-04/Props';
 import Todo from './components/Day-04/ToDo';
 import NewTodo from './components/Day-04/NewTodo';
 import FormPage from './components/Day-05/FormPage';
-<<<<<<< Updated upstream
 import UseMemo from './components/Day-06/UseMemo';
 import UseCallback from './components/Day-06/UseCallback';
-=======
+
 import Todo3 from './components/Day-04/Todo3';
->>>>>>> Stashed changes
+
 
 function App() {
   const [counter,setCounter] = useState(0);
@@ -34,14 +33,11 @@ function App() {
         <Route path='/use-params-product/:id' element={<UseParamsProduct />} />
         <Route path='/props' element={<Props counter={counter} setCounter={setCounter}/>} />
         <Route path="/todo" element={<Todo /> } />
+        <Route path="/todo3" element={<Todo3 /> } />
         <Route path="/newtodo" element={<NewTodo /> } />
         <Route path='/formpage' element={<FormPage />} />
-<<<<<<< Updated upstream
         <Route path='/use-memo' element={<UseMemo />} />
         <Route path='/use-callback' element={<UseCallback />} />
-=======
-        <Route path='/todo3' element={<Todo3 />} />
->>>>>>> Stashed changes
       </Routes>
     </div>
   );

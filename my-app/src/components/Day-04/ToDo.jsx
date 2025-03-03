@@ -1,75 +1,106 @@
 import { useState } from "react";
+import "./ToDo.css"
 
 const ToDo = () => {
-  const [list, setList] = useState(["Eat", "Sleep", "Conquer", "Repeat"]);
+  const [todos, setTodos] = useState(["Eat", "Sleep", "Conquer", "Repeat"]);
+  // console.log(todos);
   const [item, setItem] = useState("");
-  console.log(item);
 
-  const todoApp = {
-    maxWidth: "450px",
-    boxShadow: "0px 0px 10px #aaa",
-    padding: "20px",
-    borderRadius: "20px",
-  };
+  const [isEditing, setIsEditing] = useState(false);
 
-  const input = {
-    padding: "10px",
-    marginRight: "20px",
-    borderRadius: "15px",
-    border: "1px solid black",
-    outline: "none",
-  };
+  const [editIndex, setEditIndex] = useState(null);
 
-  const inputField = {
-    width: "100%",
-    height: "60px",
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-  };
+  const [editItem, setEditItem] = useState("");
 
-
-  const HandleChange = (e) => {
-    setItem(e.target.value);
-  };
-
-  const HandleClick = () => {
-    setList([...list, item]);
+  const addToDo = () => {
+    if (item.trim() === "") {
+      alert("Kindly enter your todo!");
+      return;
+    }
+    setTodos([...todos, item]);
     setItem("");
   };
 
-  return (
-    <div>
-      <h1 className="main-heading">To Do Page</h1>
+  const deleteToDo = (index) => {
+    // console.log(index)
 
-      <div className="app" style={todoApp}>
-        <div className="input-field" style={inputField}>
+    setTodos(todos.filter((_, i) => i !== index));
+    setIsEditing(false);
+    setEditItem("");
+  };
+
+  const editToDo = (index) => {
+    setEditIndex(index);
+    setIsEditing(true);
+
+
+  };
+
+  const saveToDo = () => {
+    if (editItem.trim() === "") {
+      alert("Kindly enter your todo!");
+      return;
+    }
+    const updateTodo = [...todos];
+    console.log(updateTodo);
+    updateTodo[editIndex] = editItem;
+    console.log(updateTodo);
+    setTodos(updateTodo);
+    setIsEditing(false);
+    setEditItem("");
+
+  };
+  return (
+    <div className="App">
+      <div className="todo-app">
+      <h1 style={{textAlign : "center"}}>To Do App</h1>
+        <div className="input-field">
           <input
             type="text"
-            name="todo"
             value={item}
             placeholder="Enter your todo"
-            onChange={HandleChange}
-            style={input}
+            onChange={(event) => setItem(event.target.value)}
+            className="input"
           />
-          <button
-            className="btn"
-            style={{
-              marginTop: "0px",
-            }}
-            onClick={HandleClick}
-          >
+          <button className="btn add" onClick={addToDo}>
             +
           </button>
         </div>
+        <div className="todo-list">
+          {todos.map((todo, index) => (
+            <div key={index} className="todo-item">
+              <div>
+              {isEditing && editIndex === index ? (
+                <>
+                {index + 1}.
+                  <input
+                  type="text"
+                  value={editItem}
+                  onChange={(event) => setEditItem(event.target.value)}
+                  className="input"
+                />
+                </>
+              ) : (
+                <h3>
+                  {index + 1}. {todo}
+                </h3>
+              )}
+              </div>
 
-        <div className="list">
-          {list.map((list, i) => (
-            <div>
-              <h3 key={i} style={{ textAlign: "left" }}>
-                {" "}
-                {i + 1}. {list}
-              </h3>
+              <div className="buttons">
+                {isEditing && editIndex === index ? (
+                  <button className="btn" style={{marginTop : "0px"}} onClick={saveToDo}>
+                    Save
+                  </button>
+                ) : (
+                  <button className="btn" style={{marginTop : "0px"}} onClick={() => editToDo(index)}>
+                    Edit
+                  </button>
+                )}
+                <button className="btn" style={{marginTop : "0px"}} onClick={() => deleteToDo(index)}>
+                  Delete
+                </button>
+              </div>
             </div>
           ))}
         </div>
