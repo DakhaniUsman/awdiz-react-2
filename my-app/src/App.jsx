@@ -16,6 +16,7 @@ import UseMemo from './components/Day-06/UseMemo';
 import UseCallback from './components/Day-06/UseCallback';
 
 import Todo3 from './components/Day-04/Todo3';
+import UseRef from './components/Day-07/UseRef';
 
 
 function App() {
@@ -38,6 +39,7 @@ function App() {
         <Route path='/formpage' element={<FormPage />} />
         <Route path='/use-memo' element={<UseMemo />} />
         <Route path='/use-callback' element={<UseCallback />} />
+        <Route path='/use-ref' element={<UseRef />} />
       </Routes>
     </div>
   );

@@ -25,6 +25,7 @@ function Home() {
         <button className="btn" onClick={()=> router("/formpage")}>Form Page</button>
         <button className="btn" onClick={()=> router("/use-memo")}>Use Memo Page</button>
         <button className="btn" onClick={()=> router("/use-callback")}>Use Callback Page</button>
+        <button className="btn" onClick={()=> router("/use-ref")}>Use Ref Page</button>
     </div>
 )
 

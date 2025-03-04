@@ -23,3 +23,9 @@ const ChildComponent = ({ todos, addToDo }) => {
 };
 
 export default memo(ChildComponent);
+
+// here the memo check the props provided to the component
+// it checks wheter they are same or not
+// here todo prop is same todo = [] => []
+// but the function addToDo is recreated at every render so it thinks as the function is new
+// So we have used useCallback() that chaches the function
