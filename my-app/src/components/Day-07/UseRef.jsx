@@ -21,7 +21,7 @@ const UseRef = () => {
             <button className="btn" onClick={HandleClick}>+</button>
 
             <h2>State Counter : {counter1}</h2>
-            <button className="btn" onClick={()=> setCounter1(counter1 + 1)}>+</button>
+            <button className="btn" onClick={()=> (setCounter1(counter1 + 1), console.log("⚡component re rendered⚡"))}>+</button>
         </div>
     )
 }
