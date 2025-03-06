@@ -19,6 +19,8 @@ import Todo3 from './components/Day-04/Todo3';
 import UseRef from './components/Day-07/UseRef';
 import UseReducer from './components/Day-07/UseReducer';
 import NewReducer from './components/Day-07/NewReducer';
+import ReducerPage from './components/Day-07/ReducerPage';
+import ContextCounter from './components/Day-08/ContextCounter';
 
 
 function App() {
@@ -44,6 +46,8 @@ function App() {
         <Route path='/use-ref' element={<UseRef />} />
         <Route path='/use-reducer' element={<UseReducer />} />
         <Route path='/new-reducer' element={<NewReducer />} />
+        <Route path='/reducer' element={<ReducerPage />} />
+        <Route path='/context-counter' element={<ContextCounter />} />
       </Routes>
     </div>
   );
