@@ -62,6 +62,7 @@ export default UseReducer;
 
 // useReducer is a hook in react that is used to add a reducer in react component
 // it is used to manage complex state logic through reducer function
+// Reducer returns updated state on the basis on action performed
 // It takes two values Reducer function and initial state object
 // it provides two things state and dispatch
 // state stores the object given in initial state
