@@ -14,6 +14,9 @@ const ContextCounter = () => {
       <button className='btn' onClick={()=> dispatch({type : "INCREMENT"})}>+</button>
       <button className='btn' onClick={()=> dispatch({type : "DECREMENT"})}>-</button>
       <button className='btn' onClick={()=> dispatch({type : "RESET"})}>Reset</button>
+
+      <h2>Theme : Dark</h2>
+      <button></button>
     </div>
 
   )

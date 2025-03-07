@@ -27,6 +27,7 @@ function Home() {
         <button className="btn" onClick={()=> router("/use-callback")}>Use Callback Page</button>
         <button className="btn" onClick={()=> router("/use-ref")}>Use Ref Page</button>
         <button className="btn" onClick={()=> router("/use-reducer")}>Use Reducer Page</button>
+        <button className="btn" onClick={()=> router("/context-counter")}>Context Counter</button>
     </div>
 )
 

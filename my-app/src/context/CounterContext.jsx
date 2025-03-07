@@ -16,8 +16,11 @@ const Reducer = (state,action) => {
            }
         case "RESET" :
             return {...state, counter : 0}
+        case "dark" :
+            
         default :
             return state;
+
     }
 
 }
@@ -25,7 +28,9 @@ const Reducer = (state,action) => {
 const initialState = { counter : 0}
 
 
-const CounterContextProvider = ({children}) =>{
+// Higher Order Component -> takes a component as a prop
+
+const CounterContextProvider = ({children}) =>{ // here app component is called
 
     const [state,dispatch] = useReducer(Reducer,initialState);
 
