@@ -6,7 +6,7 @@ const ReduxSliceCounter = () => {
   const count = useSelector((state) => state.counter.count);
   console.log(count);
   const theme = useSelector((state) => state.theme.isLight);
-  console.log(theme)
+  console.log("islight -",theme)
   const dispatch = useDispatch();
 
   function Increment() {
