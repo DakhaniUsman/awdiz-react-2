@@ -8,7 +8,7 @@ const ReduxCounter = () => {
     const dispatch = useDispatch();
 
     const isLight = useSelector((state) => state.isLight);
-    console.log(isLight)
+    console.log("isLight :" , isLight)
   return (
     <div style={{
         width : "100%",
