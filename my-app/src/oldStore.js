@@ -23,5 +23,5 @@ const Reducer = (state = initialState, action) => {
 }
 
 
-const store = createStore(Reducer);
-export default store;
+const oldStore = createStore(Reducer);
+export default oldStore;

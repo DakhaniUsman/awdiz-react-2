@@ -22,6 +22,7 @@ import NewReducer from './components/Day-07/NewReducer';
 import ReducerPage from './components/Day-07/ReducerPage';
 import ContextCounter from './components/Day-08/ContextCounter';
 import ReduxCounter from './components/Day-09/ReduxCounter';
+import ReduxSliceCounter from './components/Day-09/ReduxSliceCounter';
 
 
 function App() {
@@ -50,6 +51,7 @@ function App() {
         <Route path='/reducer' element={<ReducerPage />} />
         <Route path='/context-counter' element={<ContextCounter />} />
         <Route path='/redux-counter' element={<ReduxCounter />} />
+        <Route path='/redux-slice-counter' element={<ReduxSliceCounter />} />
       </Routes>
     </div>
   );
