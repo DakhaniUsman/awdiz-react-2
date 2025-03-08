@@ -1,7 +1,12 @@
 import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
 const FormPage = () => {
 
+  const isLight = useSelector((state)=> state.isLight);
+  const dispatch = useDispatch()
+  console.log("isLight :" , isLight)
+ 
   const [allUsers, setAllUsers] = useState([]);
 
   const [user, setUser] = useState({
@@ -57,8 +62,12 @@ const FormPage = () => {
   }
 
   return (
-    <div>
-      <h1>Form Page</h1>
+    <div style={{
+      width : "100%",
+      minHeight : "100vh",
+      backgroundColor : isLight ? "white" : "#333"
+    }}>
+      <h1>Form Page <button className="btn" onClick={()=> dispatch({type : 'TOGGLE_THEME'})}>{isLight ? "🌙" : "☀️"}</button></h1>
 
       <div className="form-container" style={{
         minWidth : "300px",

@@ -13,9 +13,9 @@ root.render(
   <React.StrictMode>
     <BrowserRouter>
       <Provider store={store}>
-        {/* <CounterContextProvider> */}
+        <CounterContextProvider>
           <App />
-        {/* </CounterContextProvider> */}
+        </CounterContextProvider>
       </Provider>
     </BrowserRouter>
   </React.StrictMode>
