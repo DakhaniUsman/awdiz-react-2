@@ -21,6 +21,7 @@ import UseReducer from './components/Day-07/UseReducer';
 import NewReducer from './components/Day-07/NewReducer';
 import ReducerPage from './components/Day-07/ReducerPage';
 import ContextCounter from './components/Day-08/ContextCounter';
+import ReduxCounter from './components/Day-09/ReduxCounter';
 
 
 function App() {
@@ -48,6 +49,7 @@ function App() {
         <Route path='/new-reducer' element={<NewReducer />} />
         <Route path='/reducer' element={<ReducerPage />} />
         <Route path='/context-counter' element={<ContextCounter />} />
+        <Route path='/redux-counter' element={<ReduxCounter />} />
       </Routes>
     </div>
   );

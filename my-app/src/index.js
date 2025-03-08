@@ -5,14 +5,18 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
 import CounterContextProvider from './context/CounterContext';
+import { Provider } from 'react-redux';
+import store from './store';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <BrowserRouter>
-      <CounterContextProvider>
-        <App />
-      </CounterContextProvider>
+      <Provider store={store}>
+        {/* <CounterContextProvider> */}
+          <App />
+        {/* </CounterContextProvider> */}
+      </Provider>
     </BrowserRouter>
   </React.StrictMode>
 );

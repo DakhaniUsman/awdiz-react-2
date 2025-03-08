@@ -2,40 +2,40 @@ import { createContext, useReducer } from "react";
 
 export const MyCounterContext = createContext();
 
-const Reducer = (state,action) => {
+const Reducer = (state = initialState, action) => {
 
     switch (action.type) {
-        case "INCREMENT" :
-            return {...state, counter : state.counter + 1}
-        case "DECREMENT" :
-           if (state.counter > 0){
-            return {...state, counter : state.counter - 1}
-           } else {
-            alert("COunter cannot be les than 0");
-            return state;
-           }
-        case "RESET" :
-            return {...state, counter : 0}
-        case "dark" :
-            
-        default :
+        case "INCREMENT":
+            return { ...state, counter: state.counter + 1 };
+        case "DECREMENT":
+            if (state.counter > 0) {
+                return { ...state, counter: state.counter - 1 }
+            } else {
+                alert("Counter cannot be les than 0");
+                return state;
+            }
+        case "RESET":
+            return { ...state, counter: 0 };
+        case "TOGGLE_THEME":
+            return { ...state, isLight: !state.isLight };
+        default:
             return state;
 
     }
 
 }
 
-const initialState = { counter : 0}
+const initialState = { counter: 0, isLight: true }
 
 
 // Higher Order Component -> takes a component as a prop
 
-const CounterContextProvider = ({children}) =>{ // here app component is called
+const CounterContextProvider = ({ children }) => { // here app component is called
 
-    const [state,dispatch] = useReducer(Reducer,initialState);
+    const [state, dispatch] = useReducer(Reducer, initialState);
 
     return (
-        <MyCounterContext.Provider value={{state : state, dispatch}}>
+        <MyCounterContext.Provider value={{ state: state, dispatch }}>
             {children}
         </MyCounterContext.Provider>
     )
