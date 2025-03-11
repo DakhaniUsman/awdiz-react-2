@@ -1,0 +1,34 @@
+step 1 : install react-redux and @reduxjs/toolkit
+
+react-redux gives us access to hooks such as useSeletor and useDispatch
+whereas redux toolkit helps in state management through redux
+
+step 2 : create store.js file 
+
+step 3 : configure the store.js file using the configureStore hook from @reduxjs/toolkit
+
+step 4 : import reducers and combine them with configureStore as  configureStire ({
+    reducer : {
+        counter : counterReducer,
+        theme : themeReducer
+    }
+})
+
+step 5 : create a slice.js file for each feature like counterSlice.js for counter and themeSlice.js for theme 
+
+step 6 : create a slice instance and give it the required things like name of slice , initialState and reducers {
+    action : () => {}
+}
+
+step 7 : export actions as const {action} = counterSlice.actions;
+
+step 8 : ecport reducers as export default counterSlice.reducers
+
+Note :whenever you ecport something as default you can rename it while importing 
+
+like export default counterSlice.reducers can be imported in store.js as counterReducer from './counterSlice.js'
+
+
+step 9 : wrap App component with <Provider> component from react-redux and provide store as a value in it now these slices will be acccessible to each and every component
+
+step 10 : now you can use redux counter anywhere using useSlector and useDispatch hooks 
