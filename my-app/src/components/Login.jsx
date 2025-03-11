@@ -16,6 +16,10 @@ function Login() {
   const RegisterPage = () => {
     router("/register");
   };
+
+  const AllProductsPage = () => {
+    router("/all-products")
+  }
   return (
     <div>
       <h1 className="main-heading">Login Page</h1>
@@ -25,6 +29,9 @@ function Login() {
       </button>
       <button className="btn" onClick={RegisterPage}>
         Register
+      </button>
+      <button className="btn" onClick={AllProductsPage}>
+        All Products
       </button>
 
       {loggedIn ? (
