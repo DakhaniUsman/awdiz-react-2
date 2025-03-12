@@ -1,11 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const ThemeSlice = createSlice({
-    name : "theme",
-    initialState : {isLight : true},
-    reducers : {
-        toggle : (state)=> {
-            state.isLight =  !state.isLight
+    name: "theme",
+    initialState: { isLight: true },
+    reducers: {
+        toggle: (state) => {
+            state.isLight = !state.isLight
         }
     }
 })

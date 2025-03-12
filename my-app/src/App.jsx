@@ -1,4 +1,4 @@
-import { Form, Route, Routes } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import './App.css';
 import Home from './components/Home';
 import Login from './components/Login';
@@ -7,7 +7,7 @@ import UseState from './components/Day-03/UseState';
 import UseEffect from './components/Day-03/USeEffect';
 import UseParams from './components/Day-03/UseParams';
 import UseParamsProduct from './components/Day-03/UseParamsProduct';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Props from './components/Day-04/Props';
 import Todo from './components/Day-04/ToDo';
 import NewTodo from './components/Day-04/NewTodo';
@@ -24,10 +24,25 @@ import ContextCounter from './components/Day-08/ContextCounter';
 import ReduxCounter from './components/Day-09/ReduxCounter';
 import ReduxSliceCounter from './components/Day-09/ReduxSliceCounter';
 import AllProducts from './components/Day-10/AllProducts';
+import FakeLogin from './components/Day-10/FakeLogin';
+import { useDispatch, useSelector } from 'react-redux';
+import { login } from './redux/userSlice';
 
 
 function App() {
   const [counter,setCounter] = useState(0);
+  const tokenFromRedux = useSelector((state)=> state.user.token );
+  console.log(tokenFromRedux);
+  const dispatch = useDispatch();
+
+  useEffect(()=>{
+    const tokenFromLocalStorage = JSON.parse(localStorage.getItem("token"));
+    if(tokenFromLocalStorage){
+      if(tokenFromRedux === null){
+        dispatch(login(tokenFromLocalStorage));
+      }
+    }
+  },[]) // this will prevent the data of token even when the page is refreshed
 
   return (
     <div className="App">
@@ -54,6 +69,7 @@ function App() {
         <Route path='/redux-counter' element={<ReduxCounter />} />
         <Route path='/redux-slice-counter' element={<ReduxSliceCounter />} />
         <Route path='/all-products' element={<AllProducts />} />
+        <Route path='/fake-login' element={<FakeLogin />} />
       </Routes>
     </div>
   );

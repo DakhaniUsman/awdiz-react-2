@@ -9,18 +9,18 @@ import { Provider } from "react-redux";
 // import store from './store';
 // import oldStore from "./oldStore";
 import store from "./redux/store";
-import oldStore from "./oldStore";
+// import oldStore from "./oldStore";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <BrowserRouter>
       <CounterContextProvider>
-        <Provider store={oldStore}>
-        {/* <Provider store={store}> */}
+        {/* <Provider store={oldStore}> */}
+        <Provider store={store}>
           <App />
-        {/* </Provider> */}
         </Provider>
+        {/* </Provider> */}
       </CounterContextProvider>
     </BrowserRouter>
   </React.StrictMode>
