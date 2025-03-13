@@ -48,20 +48,19 @@ const AllProducts = () => {
               width: "20%",
               minWidth: "250px",
               height: "auto",
-              boxShadow: "0px 0px 10px #aaa",
+              boxShadow: "3px 3px 5px #aaa",
               marginBottom: "20px",
               padding: "10px",
               borderRadius: "10px"
 
-            }}>
-              <span>{product.id}</span>
-              <p>{product.title}</p>
+            }} onClick={()=> router(`/single-product/${product.id}`)}>
+              <p> <b> <span>{product.id}</span>. {product.title}</b></p>
               <p><img src={product.image} style={{
                 width: "100%",
                 height: "300px",
                 objectFit: "contain"
               }} /></p>
-              <p>{product.price}</p>
+              <p><b>${product.price}/-</b></p>
             </div>
           ))}
         </div>) : (

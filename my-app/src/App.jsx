@@ -27,6 +27,7 @@ import AllProducts from './components/Day-10/AllProducts';
 import FakeLogin from './components/Day-10/FakeLogin';
 import { useDispatch, useSelector } from 'react-redux';
 import { login } from './redux/userSlice';
+import SingleProduct from './components/Day-10/SingleProduct';
 
 
 function App() {
@@ -70,6 +71,7 @@ function App() {
         <Route path='/redux-slice-counter' element={<ReduxSliceCounter />} />
         <Route path='/all-products' element={<AllProducts />} />
         <Route path='/fake-login' element={<FakeLogin />} />
+        <Route path='/single-product/:id' element={<SingleProduct />} />
       </Routes>
     </div>
   );
