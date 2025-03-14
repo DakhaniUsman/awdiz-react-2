@@ -32,14 +32,17 @@ const AllProducts = () => {
     }
   }, [token])
   return (
-    <div>
+    <div style={{position : "relative",
+      width: "100%",
+      height: "100%",}}>
       <h1>All Products</h1>
 
       <div>
         {allProducts.length > 0 ? (<div className="product-card" style={{
+          position : "relative",
           width: "100%",
-          minHeight: "100vh",
-          display: "flex",
+          height: "100%",
+          display: "flex",  
           justifyContent: "space-evenly",
           flexWrap: "wrap"
         }}>

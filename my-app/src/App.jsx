@@ -28,6 +28,7 @@ import FakeLogin from './components/Day-10/FakeLogin';
 import { useDispatch, useSelector } from 'react-redux';
 import { login } from './redux/userSlice';
 import SingleProduct from './components/Day-10/SingleProduct';
+import Navbar from './components/Day-10/Navbar';
 
 
 function App() {
@@ -47,6 +48,7 @@ function App() {
 
   return (
     <div className="App">
+      <Navbar />
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='/login' element={<Login />} />

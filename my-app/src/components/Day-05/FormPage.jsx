@@ -2,78 +2,94 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 const FormPage = () => {
+  const isLight = useSelector((state) => state.isLight);
+  const dispatch = useDispatch();
+  console.log("isLight :", isLight);
 
-  const isLight = useSelector((state)=> state.isLight);
-  const dispatch = useDispatch()
-  console.log("isLight :" , isLight)
- 
   const [allUsers, setAllUsers] = useState([]);
 
   const [user, setUser] = useState({
-    username : "",
-    useremail : "",
-    userpassword : "",
-    userconfirmpassword : ""
+    username: "",
+    useremail: "",
+    userpassword: "",
+    userconfirmpassword: "",
   });
 
   const input = {
-    width : "100%",
-    padding : "10px",
-    border : "1px solid black",
-    borderRadius : "10px",
-    marginBottom : "10px"
-  }
+    width: "100%",
+    padding: "10px",
+    border: "1px solid black",
+    borderRadius: "10px",
+    marginBottom: "10px",
+  };
 
   const userContainer = {
-    width : "100%",
-    display : "flex",
-    justifyContent : "center",
-    gap : "20px"
-  }
+    width: "100%",
+    display: "flex",
+    justifyContent: "center",
+    gap: "20px",
+  };
 
   const userDiv = {
-    boxShadow : "0px 0px 10px #aaa",
-    padding : "20px",
-    borderRadius : "20px"
-  }
+    boxShadow: "0px 0px 10px #aaa",
+    padding: "20px",
+    borderRadius: "20px",
+  };
   console.log(user);
 
   const handleChange = (event) => {
-    console.log(event.target.value, event.target.name)
-    setUser({...user,[event.target.name] : event.target.value });
+    console.log(event.target.value, event.target.name);
+    setUser({ ...user, [event.target.name]: event.target.value });
   };
 
   const handleClick = (event) => {
-    event.preventDefault();  
+    event.preventDefault();
 
-    if(user.username && user.useremail &&  user.userpassword && user.userconfirmpassword)  {
-      setAllUsers([...allUsers,user]);
+    if (
+      user.username &&
+      user.useremail &&
+      user.userpassword &&
+      user.userconfirmpassword
+    ) {
+      setAllUsers([...allUsers, user]);
       setUser({
-        username : "",
-        useremail : "",
-        userpassword : "",
-        userconfirmpassword : ""
+        username: "",
+        useremail: "",
+        userpassword: "",
+        userconfirmpassword: "",
       });
-    } else{
+    } else {
       alert("kidnly fill all the required fields!");
       return;
     }
-
-  }
+  };
 
   return (
-    <div style={{
-      width : "100%",
-      minHeight : "100vh",
-      backgroundColor : isLight ? "white" : "#333"
-    }}>
-      <h1>Form Page <button className="btn" onClick={()=> dispatch({type : 'TOGGLE_THEME'})}>{isLight ? "🌙" : "☀️"}</button></h1>
+    <div
+      style={{
+        width: "100%",
+        height: "100%",
+        backgroundColor: isLight ? "white" : "#333",
+      }}
+    >
+      <h1>
+        Form Page{" "}
+        <button
+          className="btn"
+          onClick={() => dispatch({ type: "TOGGLE_THEME" })}
+        >
+          {isLight ? "🌙" : "☀️"}
+        </button>
+      </h1>
 
-      <div className="form-container" style={{
-        minWidth : "300px",
-        maxWidth : "350px",
-        margin : "auto"
-      }}>
+      <div
+        className="form-container"
+        style={{
+          minWidth: "300px",
+          maxWidth: "350px",
+          margin: "auto",
+        }}
+      >
         <form>
           <label htmlFor="name"></label>
           <input
@@ -117,14 +133,16 @@ const FormPage = () => {
             value={user.userconfirmpassword}
           />
           <br />
-          <button className="btn" onClick={handleClick}>Submit</button>
+          <button className="btn" onClick={handleClick}>
+            Submit
+          </button>
         </form>
       </div>
 
       <div>
         <h1>All Users</h1>
         <div className="users-container" style={userContainer}>
-          {allUsers.map((user,i)=>(
+          {allUsers.map((user, i) => (
             <div key={i} style={userDiv}>
               <h5>User No. {i + 1}</h5>
               <h3>Name : {user.username}</h3>

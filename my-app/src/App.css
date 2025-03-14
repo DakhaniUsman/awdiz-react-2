@@ -1,10 +1,11 @@
 .App {
   width: 100%;
-  min-height: 100vh;
+  height: 100%; 
   text-align: center;
   background-color: white;
   display: flex;
   justify-content: center;
+  position : relative;
   /* align-items: center; */
 }
 

@@ -6,7 +6,7 @@ const ReduxSliceCounter = () => {
   const count = useSelector((state) => state.counter.count);
   console.log(count);
   const theme = useSelector((state) => state.theme.isLight);
-  console.log("islight -",theme)
+  console.log("islight -", theme);
   const dispatch = useDispatch();
 
   function Increment() {
@@ -26,16 +26,18 @@ const ReduxSliceCounter = () => {
     dispatch(reset());
   }
 
-  function ToggleTheme(){
-    dispatch(toggle())
+  function ToggleTheme() {
+    dispatch(toggle());
   }
 
   return (
-    <div style={{
-        width : "100%",
-        minHeight : "100vh",
-        backgroundColor : theme ? "white" : "#333"
-    }}>
+    <div
+      style={{
+        width: "100%",
+        height: "100%",
+        backgroundColor: theme ? "white" : "#333",
+      }}
+    >
       <h1>Redux Slice Page</h1>
 
       <h2>Redux Slice Counter : {count}</h2>
@@ -50,7 +52,9 @@ const ReduxSliceCounter = () => {
         Reset
       </button>
 
-      <button className="btn" onClick={ToggleTheme}>{theme ?"🌙" : "☀️"}</button>
+      <button className="btn" onClick={ToggleTheme}>
+        {theme ? "🌙" : "☀️"}
+      </button>
     </div>
   );
 };
