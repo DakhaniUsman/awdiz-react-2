@@ -16,20 +16,20 @@ const Navbar = () => {
         justifyContent: "space-around",
       }}
     >
-      <h1 onClick={() => router("/")} style={{ cursor: "pointer" }}>
+      <p onClick={() => router("/")} style={{ cursor: "pointer" }}>
         Home
-      </h1>
-      <h1 onClick={() => router("/all-products")} style={{ cursor: "pointer" }}>
+      </p>
+      <p onClick={() => router("/all-products")} style={{ cursor: "pointer" }}>
         Products
-      </h1>
+      </p>
       {!tokenInRedux ? (
-        <h1 onClick={() => router("/fake-login")} style={{ cursor: "pointer" }}>
+        <p onClick={() => router("/fake-login")} style={{ cursor: "pointer" }}>
           Login
-        </h1>
+        </p>
       ) : (
-        <h1 onClick={() => dispatch(logout())} style={{ cursor: "pointer" }}>
+        <p onClick={() => dispatch(logout())} style={{ cursor: "pointer" }}>
           Logout
-        </h1>
+        </p>
       )}
     </div>
   );
