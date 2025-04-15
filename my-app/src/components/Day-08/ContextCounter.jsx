@@ -5,7 +5,7 @@ const ContextCounter = () => {
 
   const {state,dispatch} = useContext(MyCounterContext)
   console.log(state)
-
+ 
   return (
     <div style={{
       width : "100%",

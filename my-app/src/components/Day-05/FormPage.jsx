@@ -1,19 +1,20 @@
 import axios from "axios";
 import { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import toast from "react-hot-toast";
+import { useSelector } from "react-redux";
 
 const FormPage = () => {
-  const isLight = useSelector((state) => state.isLight);
-  const dispatch = useDispatch();
+  const isLight = useSelector((state) => state.theme.isLight);
+  // const dispatch = useDispatch();
   console.log("isLight :", isLight);
 
   const [allUsers, setAllUsers] = useState([]);
 
   const [user, setUser] = useState({
-    username: "",
-    useremail: "",
-    userpassword: "",
-    userconfirmpassword: "",
+    name: "",
+    email: "",
+    password: "",
+    confirmPassword: "",
   });
 
   const input = {
@@ -43,26 +44,36 @@ const FormPage = () => {
     setUser({ ...user, [event.target.name]: event.target.value });
   };
 
-  const handleClick = async(event) => {
+  const handleClick = async (event) => {
     event.preventDefault();
 
-    if (
-      user.username &&
-      user.useremail &&
-      user.userpassword &&
-      user.userconfirmpassword
-    ) {
-      setAllUsers([...allUsers, user]);
-      setUser({
-        username: "",
-        useremail: "",
-        userpassword: "",
-        userconfirmpassword: "",
-      });
-      const res = await axios.post("http://localhost:8000/api/v1/auth/register");
-      console.log(res,"res")
+    if (user.name && user.email && user.password && user.confirmPassword) {
+      try {
+        const res = await axios.post("http://localhost:8000/api/v1/auth/register",{
+          user,
+        });
+        console.log(res.data,"res.data")
+  
+        if(res.data.success === true){
+          toast.success(res.data.message)
+          setAllUsers([...allUsers, user]);
+          setUser({
+            name: "",
+            email: "",
+            password: "",
+            confirmPassword: "",
+          });
+          
+        } else {
+           toast.error(res.data.message)
+        }
+
+      } catch (error) {
+        console.log(error)
+      }
+  
     } else {
-      alert("kidnly fill all the required fields!");
+      toast.error("Kindly fill all the required fields!");
       return;
     }
   };
@@ -72,14 +83,14 @@ const FormPage = () => {
       style={{
         width: "100%",
         height: "100%",
-        // backgroundColor: isLight ? "white" : "#333",
+        backgroundColor: isLight ? "white" : "#333",
       }}
     >
       <h1>
         Form Page{" "}
         {/* <button
           className="btn"
-          onClick={() => dispatch({ type: "TOGGLE_THEME" })}
+          onClick={() => dispatch({type :"toggle" })}
         >
           {isLight ? "🌙" : "☀️"}
         </button> */}
@@ -97,43 +108,43 @@ const FormPage = () => {
           <label htmlFor="name"></label>
           <input
             type="text"
-            name="username"
+            name="name"
             id="name"
             placeholder="Enter Your Name"
             onChange={handleChange}
             className="input"
             style={input}
-            value={user.username}
+            value={user.name}
           />
           <br />
           <input
             type="email"
-            name="useremail"
+            name="email"
             id="email"
             placeholder="Enter Your Email"
             onChange={handleChange}
             style={input}
-            value={user.useremail}
+            value={user.email}
           />
           <br />
           <input
             type="password"
-            name="userpassword"
+            name="password"
             id="password"
             placeholder="Enter Your Pasword"
             onChange={handleChange}
             style={input}
-            value={user.userpassword}
+            value={user.password}
           />
           <br />
           <input
             type="password"
-            name="userconfirmpassword"
-            id="userconfirmpassword"
+            name="confirmPassword"
+            id="confirmPassword"
             placeholder="Enter Your Confirm Password"
             onChange={handleChange}
             style={input}
-            value={user.userconfirmpassword}
+            value={user.confirmPassword}
           />
           <br />
           <button className="btn" onClick={handleClick}>
@@ -148,8 +159,8 @@ const FormPage = () => {
           {allUsers.map((user, i) => (
             <div key={i} style={userDiv}>
               <h5>User No. {i + 1}</h5>
-              <h3>Name : {user.username}</h3>
-              <h3>Email : {user.useremail}</h3>
+              <h3>Name : {user.name}</h3>
+              <h3>Email : {user.email}</h3>
             </div>
           ))}
         </div>
