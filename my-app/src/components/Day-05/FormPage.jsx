@@ -1,3 +1,4 @@
+import axios from "axios";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -42,7 +43,7 @@ const FormPage = () => {
     setUser({ ...user, [event.target.name]: event.target.value });
   };
 
-  const handleClick = (event) => {
+  const handleClick = async(event) => {
     event.preventDefault();
 
     if (
@@ -58,6 +59,8 @@ const FormPage = () => {
         userpassword: "",
         userconfirmpassword: "",
       });
+      const res = await axios.post("http://localhost:8000/api/v1/auth/register");
+      console.log(res,"res")
     } else {
       alert("kidnly fill all the required fields!");
       return;
@@ -69,17 +72,17 @@ const FormPage = () => {
       style={{
         width: "100%",
         height: "100%",
-        backgroundColor: isLight ? "white" : "#333",
+        // backgroundColor: isLight ? "white" : "#333",
       }}
     >
       <h1>
         Form Page{" "}
-        <button
+        {/* <button
           className="btn"
           onClick={() => dispatch({ type: "TOGGLE_THEME" })}
         >
           {isLight ? "🌙" : "☀️"}
-        </button>
+        </button> */}
       </h1>
 
       <div
