@@ -14,12 +14,17 @@ const FakeLogin = () => {
   const token = useSelector((state)=> state.user.token)
 
   const formDiv = {
-    with: "100%",
+    width: "100%",
+    maxWidth : "450px",
+    display :"flex",
+    justifyContent : "center",
+    alignItems : "center",
+    flexDirection : "column",
     paddingTop: "30px"
   }
 
   const input = {
-    width: "80%",
+    width: "100%",
     padding: "10px",
     border: "1px solid black",
     borderRadius: "10px",
@@ -68,7 +73,13 @@ const FakeLogin = () => {
 
 
   return (
-    <div>
+    <div style={{
+      width : "100%",
+      display : "flex",
+      flexDirection : "column",
+      justifyContent : "center",
+      alignItems : "center"
+    }}>
       <h1>Fake Login Page</h1>
       <form style={formDiv} onSubmit={handleSubmit}>
         <input type="text" style={input} name="username" onChange={handleChange} placeholder='Enter your name' />
