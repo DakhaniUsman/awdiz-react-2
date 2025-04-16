@@ -2,11 +2,13 @@ import axios from "axios";
 import { useState } from "react";
 import toast from "react-hot-toast";
 import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 const FormPage = () => {
   const isLight = useSelector((state) => state.theme.isLight);
   // const dispatch = useDispatch();
   console.log("isLight :", isLight);
+  const router = useNavigate();
 
   const [allUsers, setAllUsers] = useState([]);
 
@@ -63,6 +65,8 @@ const FormPage = () => {
             password: "",
             confirmPassword: "",
           });
+
+          router("/login")
           
         } else {
            toast.error(res.data.message)

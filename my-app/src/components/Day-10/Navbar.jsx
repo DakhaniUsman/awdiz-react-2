@@ -23,7 +23,7 @@ const Navbar = () => {
         Products
       </p>
       {!tokenInRedux ? (
-        <p onClick={() => router("/fake-login")} style={{ cursor: "pointer" }}>
+        <p onClick={() => router("/login")} style={{ cursor: "pointer" }}>
           Login
         </p>
       ) : (

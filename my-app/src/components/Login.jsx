@@ -3,11 +3,11 @@ import { useNavigate } from "react-router-dom";
 
 function Login() {
   const router = useNavigate();
-  const [loggedIn, setLoggedIn] = useState(false);
+  // const [loggedIn, setLoggedIn] = useState(false);
 
-  const LoggedInFunction = () => {
-    setLoggedIn(!loggedIn);
-  };
+  // const LoggedInFunction = () => {
+  //   setLoggedIn(!loggedIn);
+  // };
 
   const HomePage = () => {
     router("/");
@@ -34,7 +34,7 @@ function Login() {
         All Products
       </button>
 
-      {loggedIn ? (
+      {/* {loggedIn ? (
         <div>
           <h2>Welcome User</h2>
           <button className="btn" onClick={LoggedInFunction}>
@@ -48,7 +48,9 @@ function Login() {
             Log In
           </button>
         </div>
-      )}
+      )} */}
+
+        
     </div>
   );
 }
