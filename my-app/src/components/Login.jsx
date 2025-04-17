@@ -1,37 +1,70 @@
+import axios from "axios";
 import { useState } from "react";
+import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 
 function Login() {
   const router = useNavigate();
+
+  const [userData, setUserData] = useState({
+    email: "",
+    password: "",
+  });
+
   // const [loggedIn, setLoggedIn] = useState(false);
 
   // const LoggedInFunction = () => {
   //   setLoggedIn(!loggedIn);
   // };
 
-  const HomePage = () => {
-    router("/");
-  };
-
   const RegisterPage = () => {
     router("/register");
   };
 
-  const AllProductsPage = () => {
-    router("/all-products")
-  }
+  const input = {
+    width: "100%",
+    padding: "10px",
+    border: "1px solid black",
+    borderRadius: "10px",
+    marginBottom: "10px",
+  };
+
+  const handleChange = (event) => {
+    setUserData({ ...userData, [event.target.name]: event.target.value });
+  };
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+
+    try {
+      const response = await axios.post(
+        "http://localhost:8000/api/v1/auth/login",
+        {
+          userData,
+        }
+      );
+      console.log(response, "response");
+      if (response.data.success === true) {
+        toast.success(response.data.message);
+        setUserData({ email: "", password: "" });
+        router("/");
+      } else if (response.data.message === "Kindly register") {
+        toast.error(response.data.message);
+        router("/register");
+      }else {
+        toast.error(response.data.message);
+      }
+    } catch (error) {
+      toast.error(error.response.data.message || error.response.data.error);
+    }
+
+    // toast.success("Login Successfull!")
+  };
   return (
     <div>
       <h1 className="main-heading">Login Page</h1>
-
-      <button className="btn" onClick={HomePage}>
-        Home
-      </button>
       <button className="btn" onClick={RegisterPage}>
         Register
-      </button>
-      <button className="btn" onClick={AllProductsPage}>
-        All Products
       </button>
 
       {/* {loggedIn ? (
@@ -50,7 +83,36 @@ function Login() {
         </div>
       )} */}
 
-        
+      <div
+        style={{
+          minWidth: "300px",
+          maxWidth: "350px",
+          margin: "auto",
+          marginTop: "2em",
+        }}
+      >
+        <form onSubmit={handleSubmit}>
+          <input
+            type="email"
+            name="email"
+            placeholder="Enter your email"
+            style={input}
+            onChange={handleChange}
+            value={userData.email}
+          />{" "}
+          <br />
+          <input
+            type="password"
+            name="password"
+            placeholder="Enter your password"
+            style={input}
+            onChange={handleChange}
+            value={userData.password}
+          />{" "}
+          <br />
+          <input type="submit" value="Submit" className="btn" />
+        </form>
+      </div>
     </div>
   );
 }

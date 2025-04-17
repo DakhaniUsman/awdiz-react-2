@@ -55,16 +55,16 @@ function Register() {
 
     if (user.name && user.email && user.password && user.confirmPassword) {
       try {
-        const res = await axios.post(
+        const response = await axios.post(
           "http://localhost:8000/api/v1/auth/register",
           {
             user,
           }
         );
-        console.log(res.data, "res.data");
+        console.log(response.data, "response.data");
 
-        if (res.data.success === true) {
-          toast.success(res.data.message);
+        if (response.data.success === true) {
+          toast.success(response.data.message);
           setAllUsers([...allUsers, user]);
           setUser({
             name: "",
@@ -74,8 +74,11 @@ function Register() {
           });
 
           router("/login");
-        } else {
-          toast.error(res.data.message);
+        } else if (response.data.message === "Email already exist *_*"){
+          toast.error(response.data.message + " Kindly login");
+          router('/login')
+        }else {
+          toast.error(response.data.message);
         }
       } catch (error) {
         console.log(error);
