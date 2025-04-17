@@ -22,11 +22,17 @@ function Login() {
   };
 
   const input = {
-    width: "100%",
+    width: "90%",
     padding: "10px",
     border: "1px solid black",
     borderRadius: "10px",
     marginBottom: "10px",
+  };
+
+  const userDiv = {
+    boxShadow: "0px 0px 10px #aaa",
+    padding: "20px",
+    borderRadius: "20px",
   };
 
   const handleChange = (event) => {
@@ -91,7 +97,7 @@ function Login() {
           marginTop: "2em",
         }}
       >
-        <form onSubmit={handleSubmit}>
+        <form style={userDiv} onSubmit={handleSubmit}>
           <input
             type="email"
             name="email"

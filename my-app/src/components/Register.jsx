@@ -24,19 +24,14 @@ function Register() {
   });
 
   const input = {
-    width: "100%",
+    width: "90%",
     padding: "10px",
     border: "1px solid black",
     borderRadius: "10px",
     marginBottom: "10px",
+    margin : "10px auto"
   };
 
-  const userContainer = {
-    width: "100%",
-    display: "flex",
-    justifyContent: "center",
-    gap: "20px",
-  };
 
   const userDiv = {
     boxShadow: "0px 0px 10px #aaa",
@@ -102,7 +97,7 @@ function Register() {
       <h1 className="main-heading">Register Page</h1>
 
       <div style={{ minWidth: "300px", maxWidth: "350px", margin: "auto" }}>
-        <form>
+        <form style={userDiv}>
           <label htmlFor="name"></label>
           <input
             type="text"
