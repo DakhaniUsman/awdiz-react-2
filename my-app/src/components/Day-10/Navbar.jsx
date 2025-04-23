@@ -6,7 +6,9 @@ import { logout } from "../../redux/userSlice";
 const Navbar = () => {
   const router = useNavigate();
   const dispatch = useDispatch();
-  const tokenInRedux = useSelector((state) => state.user.token);
+  // const tokenInRedux = useSelector((state) => state.user.token);
+  const userData = useSelector((state)=> state.user.user)
+  console.log(userData,"userData")
   return (
     <div
       style={{
@@ -22,13 +24,13 @@ const Navbar = () => {
       <p onClick={() => router("/all-products")} style={{ cursor: "pointer" }}>
         Products
       </p>
-      {!tokenInRedux ? (
+      {!userData ? (
         <p onClick={() => router("/login")} style={{ cursor: "pointer" }}>
           Login
         </p>
       ) : (
         <p onClick={() => dispatch(logout())} style={{ cursor: "pointer" }}>
-          Logout
+          Welcome, {userData?.name} <br /> Logout
         </p>
       )}
     </div>

@@ -2,16 +2,19 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const UserSlice = createSlice({
     name: "user",
-    initialState: { token: null },
+    initialState: { user: null },
     reducers: {
         login: (state, action) => {
             console.log(action, "action");
-            localStorage.setItem("token", JSON.stringify(action.payload));
-            state.token = action.payload;
+            if(action.payload ){
+              localStorage.setItem("tokenFromBackend",JSON.stringify(action.payload.token));
+              state.user = action.payload.userData;
+            }
+
           },
           logout: (state) => {
             localStorage.removeItem("token");
-            state.token = null;
+            state.user = null;
             alert("Logout successfull.");
           },
 

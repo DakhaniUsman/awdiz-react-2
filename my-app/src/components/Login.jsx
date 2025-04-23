@@ -1,7 +1,9 @@
 import axios from "axios";
 import { useState } from "react";
 import toast from "react-hot-toast";
+import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { login } from "../redux/userSlice";
 
 function Login() {
   const router = useNavigate();
@@ -10,6 +12,8 @@ function Login() {
     email: "",
     password: "",
   });
+
+  const dispatch = useDispatch();
 
   // const [loggedIn, setLoggedIn] = useState(false);
 
@@ -53,6 +57,7 @@ function Login() {
       if (response.data.success === true) {
         toast.success(response.data.message);
         setUserData({ email: "", password: "" });
+        dispatch(login(response.data))
         router("/");
       } else if (response.data.message === "Kindly register") {
         toast.error(response.data.message);
