@@ -1,11 +1,12 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
+import toast from 'react-hot-toast'
 import { useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 
 const AllProducts = () => {
 
-  const token = useSelector((state) => state.user.token)
+  const token = useSelector((state) => state.user.token);
   const router = useNavigate();
   const [allProducts, setAllProducts] = useState([]);
   console.log(allProducts, "allProducts")
@@ -24,8 +25,8 @@ const AllProducts = () => {
 
   useEffect(() => {
     if (token === null) {
-      // alert("Please Log in first");
-      router("/fake-login");
+      toast.error("Please Log in first");
+      router("/login");
     }
     else {
       getAllProducts();

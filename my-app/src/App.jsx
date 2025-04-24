@@ -29,6 +29,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { login } from './redux/userSlice';
 import SingleProduct from './components/Day-10/SingleProduct';
 import Navbar from './components/Day-10/Navbar';
+import toast from 'react-hot-toast';
 
 
 function App() {
@@ -36,15 +37,30 @@ function App() {
   const tokenFromRedux = useSelector((state)=> state.user.token );
   console.log(tokenFromRedux);
   const dispatch = useDispatch();
+  const userData = useSelector((state)=> state.user.user )
+
+  // useEffect(()=>{
+  //   const tokenFromLocalStorage = JSON.parse(localStorage.getItem("token"));
+  //   console.log(tokenFromLocalStorage,"tokenFromLocalStorage")
+  //   if(tokenFromLocalStorage){
+  //     if(tokenFromRedux === null){
+  //       dispatch(login(tokenFromLocalStorage));
+  //     }
+  //   }
+  // },[]) 
+  // this will prevent the data of token even when the page is refreshed
 
   useEffect(()=>{
-    const tokenFromLocalStorage = JSON.parse(localStorage.getItem("token"));
-    if(tokenFromLocalStorage){
-      if(tokenFromRedux === null){
-        dispatch(login(tokenFromLocalStorage));
+    if(!userData){
+      const token = JSON.parse(localStorage.getItem("token"));
+      if (token){
+        console.log("User logged in but lost data");
+      } else{
+        console.log("User not logged in")
       }
+      toast.error("user data not found")
     }
-  },[]) // this will prevent the data of token even when the page is refreshed
+  },[])
 
   return (
     <div className="App">
