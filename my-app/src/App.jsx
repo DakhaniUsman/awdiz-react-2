@@ -30,6 +30,7 @@ import { login } from './redux/userSlice';
 import SingleProduct from './components/Day-10/SingleProduct';
 import Navbar from './components/Day-10/Navbar';
 import toast from 'react-hot-toast';
+import axios from 'axios';
 
 
 function App() {
@@ -38,6 +39,7 @@ function App() {
   console.log(tokenFromRedux);
   const dispatch = useDispatch();
   const userData = useSelector((state)=> state.user.user )
+  console.log(userData,"userDatafrom Redux")
 
   // useEffect(()=>{
   //   const tokenFromLocalStorage = JSON.parse(localStorage.getItem("token"));
@@ -49,18 +51,40 @@ function App() {
   //   }
   // },[]) 
   // this will prevent the data of token even when the page is refreshed
+  
+  const token = JSON.parse(localStorage.getItem("token"));
+  
+  const getCurrentUser = async() => {
+    try{
+      const response = await axios.post("http://localhost:8000/api/v1/auth/get-current-user",{
+        token
+      })
+
+      if(response.data.success){
+        dispatch(login(response.data.userData))
+      }
+      else {
+        localStorage.removeItem("token")
+      }
+
+    } catch(error){
+      console.log(error)
+      
+    }
+  }
 
   useEffect(()=>{
     if(!userData){
-      const token = JSON.parse(localStorage.getItem("token"));
       if (token){
         console.log("User logged in but lost data");
+        // make api call with token for getting user data on reload
+
+        getCurrentUser();
       } else{
         console.log("User not logged in")
       }
-      toast.error("user data not found")
     }
-  },[])
+  },[userData,token])
 
   return (
     <div className="App">

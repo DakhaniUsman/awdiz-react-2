@@ -69,7 +69,7 @@ function Login() {
       toast.error(error.response.data.message || error.response.data.error);
     }
 
-    // toast.success("Login Successfull!")
+    toast.success("Login Successfull!")
   };
   return (
     <div>

@@ -6,9 +6,9 @@ import { useNavigate } from 'react-router-dom'
 
 const AllProducts = () => {
 
-  const token = useSelector((state) => state.user.token);
+  const token =  JSON.parse(localStorage.getItem("token"));
   const router = useNavigate();
-  const [allProducts, setAllProducts] = useState([]);
+  const [allProducts, setAllProducts] = useState([]); 
   console.log(allProducts, "allProducts")
 
   const getAllProducts = async () => {
