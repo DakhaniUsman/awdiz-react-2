@@ -30,6 +30,7 @@ const Navbar = () => {
         </p>
       ) : (
         <p onClick={() => dispatch(logout())} style={{ cursor: "pointer" }}>
+          {console.log(userData,"userData Navbar")}
           Welcome, {userData?.name} <br /> Logout
         </p>
       )}
