@@ -31,6 +31,8 @@ import SingleProduct from './components/Day-10/SingleProduct';
 import Navbar from './components/Day-10/Navbar';
 import toast from 'react-hot-toast';
 import axios from 'axios';
+import AddProduct from './components/seller/AddProduct';
+import ViewAddedProduct from './components/seller/ViewAddedProduct';
 
 
 function App() {
@@ -61,13 +63,14 @@ function App() {
       })
 
       if(response.data.success){
-        dispatch(login(response.data.userData))
+        dispatch(login(response.data))
       }
       else {
         localStorage.removeItem("token")
       }
 
     } catch(error){
+      toast.error(error.message)
       console.log(error)
       
     }
@@ -114,6 +117,8 @@ function App() {
         <Route path='/all-products' element={<AllProducts />} />
         <Route path='/fake-login' element={<FakeLogin />} />
         <Route path='/single-product/:id' element={<SingleProduct />} />
+        <Route path='/add-product' element={<AddProduct />} />
+        <Route path='/view-product' element={<ViewAddedProduct />} />
       </Routes>
     </div>
   );

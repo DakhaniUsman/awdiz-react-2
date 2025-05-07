@@ -9,10 +9,11 @@ const UserSlice = createSlice({
         login: (state, action) => {
             console.log(action, "action");
             console.log(action.payload,"action.payload")
+            console.log(action.payload.userData,"action.payload.userData")
             if(action.payload?.token){
               localStorage.setItem("token",JSON.stringify(action.payload.token));
             }
-            state.user = action.payload;
+            state.user = action.payload.userData;
             
           },
           logout: (state) => {

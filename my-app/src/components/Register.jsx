@@ -19,6 +19,7 @@ function Register() {
   const [user, setUser] = useState({
     name: "",
     email: "",
+    role : "user",
     password: "",
     confirmPassword: "",
   });
@@ -38,17 +39,22 @@ function Register() {
     padding: "20px",
     borderRadius: "20px",
   };
-  console.log(user);
+  console.log(user,"user");
 
   const handleChange = (event) => {
     console.log(event.target.value, event.target.name);
     setUser({ ...user, [event.target.name]: event.target.value });
   };
 
-  const handleClick = async (event) => {
+  const handleChangeRole = (event) => {
+    console.log(event.target.name,event.target.value)
+    setUser({...user, [event.target.name] : event.target.value})
+  } 
+
+  const handleSubmit = async (event) => {
     event.preventDefault();
 
-    if (user.name && user.email && user.password && user.confirmPassword) {
+    if (user.name && user.email && user.password && user.confirmPassword && user.role) {
       try {
         const response = await axios.post(
           "http://localhost:8000/api/v1/auth/register",
@@ -64,6 +70,7 @@ function Register() {
           setUser({
             name: "",
             email: "",
+            role : "",
             password: "",
             confirmPassword: "",
           });
@@ -97,7 +104,7 @@ function Register() {
       <h1 className="main-heading">Register Page</h1>
 
       <div style={{ minWidth: "300px", maxWidth: "350px", margin: "auto" }}>
-        <form style={userDiv}>
+        <form style={userDiv} onSubmit={handleSubmit}>
           <label htmlFor="name"></label>
           <input
             type="text"
@@ -120,6 +127,14 @@ function Register() {
             value={user.email}
           />
           <br />
+          <label htmlFor="role" >Select Role :</label>
+          <br />
+          <select name="role" id="role" style={input} onChange={handleChangeRole}>
+            <option value="user">User</option>
+            <option value="seller">Seller</option>
+            <option value="admin">Admin</option>
+          </select>
+          <br />
           <input
             type="password"
             name="password"
@@ -140,7 +155,7 @@ function Register() {
             value={user.confirmPassword}
           />
           <br />
-          <button className="btn" onClick={handleClick}>
+          <button className="btn">
             Submit
           </button>
         </form>

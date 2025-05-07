@@ -24,6 +24,12 @@ const Navbar = () => {
       <p onClick={() => router("/all-products")} style={{ cursor: "pointer" }}>
         Products
       </p>
+      {userData?.role === "seller" ? (
+        <>
+          <p onClick={()=>{router("/view-product")}}>View Added Product</p>
+          <p onClick={()=>{router("/add-product")}}>Add Product</p>
+        </>
+      ) : (<></>) }
       {!userData ? (
         <p onClick={() => router("/login")} style={{ cursor: "pointer" }}>
           Login
@@ -34,6 +40,7 @@ const Navbar = () => {
           Welcome, {userData?.name} <br /> Logout
         </p>
       )}
+      
     </div>
   );
 };
