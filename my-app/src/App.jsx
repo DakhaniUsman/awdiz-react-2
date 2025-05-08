@@ -33,6 +33,7 @@ import toast from 'react-hot-toast';
 import axios from 'axios';
 import AddProduct from './components/seller/AddProduct';
 import ViewAddedProduct from './components/seller/ViewAddedProduct';
+import NotFound from './components/NotFound';
 
 
 function App() {
@@ -93,6 +94,7 @@ function App() {
     <div className="App">
       <Navbar />
       <Routes>
+        <Route path='*' element={<NotFound />}/>
         <Route path='/' element={<Home />} />
         <Route path='/login' element={<Login />} />
         <Route path='/register' element={<Register />} />
@@ -118,7 +120,7 @@ function App() {
         <Route path='/fake-login' element={<FakeLogin />} />
         <Route path='/single-product/:id' element={<SingleProduct />} />
         <Route path='/add-product' element={<AddProduct />} />
-        <Route path='/view-product' element={<ViewAddedProduct />} />
+        <Route path='/view-added-products' element={<ViewAddedProduct />} />
       </Routes>
     </div>
   );

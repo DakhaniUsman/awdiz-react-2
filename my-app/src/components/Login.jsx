@@ -55,9 +55,9 @@ function Login() {
       );
       console.log(response, "response");
       if (response.data.success === true) {
-        toast.success(response.data.message);
         setUserData({ email: "", password: "" });
         dispatch(login(response.data))
+        toast.success(response.data.message);
         router("/");
       } else if (response.data.message === "Kindly register") {
         toast.error(response.data.message);

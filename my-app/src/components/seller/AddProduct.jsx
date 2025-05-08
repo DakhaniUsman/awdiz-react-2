@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
@@ -16,6 +16,8 @@ const AddProduct = () => {
     category: "clothing",
     image: "",
   });
+
+
 
   console.log(productData,"productData")
 
@@ -74,10 +76,10 @@ const AddProduct = () => {
             image: "",
           });
 
-          router("/login");
+          router("/view-added-products");
         } else if (response.data.message === "Email already exist *_*") {
           toast.error(response.data.message + " Kindly login");
-          //   router("/login");
+            router("/login");
         } else {
           toast.error(response.data.message);
         }
@@ -89,6 +91,14 @@ const AddProduct = () => {
       return;
     }
   };
+
+  useEffect(()=>{
+    if(user && user?.role !== "seller" || !user){
+      toast.error("You do not have access to this page")
+      router("/")
+    }
+  
+  },[user])
 
   return (
     <>

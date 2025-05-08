@@ -26,7 +26,7 @@ const Navbar = () => {
       </p>
       {userData?.role === "seller" ? (
         <>
-          <p onClick={()=>{router("/view-product")}}>View Added Product</p>
+          <p onClick={()=>{router("/view-added-products")}}>View Added Product</p>
           <p onClick={()=>{router("/add-product")}}>Add Product</p>
         </>
       ) : (<></>) }

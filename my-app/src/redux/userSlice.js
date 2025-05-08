@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import toast from "react-hot-toast";
 
 
 
@@ -19,7 +20,7 @@ const UserSlice = createSlice({
           logout: (state) => {
             localStorage.removeItem("token");
             state.user = null;
-            alert("Logout successfull.");
+            toast.success("Logout successfull.");
           },
 
     }

@@ -47,17 +47,17 @@ const AllProducts = () => {
           justifyContent: "space-evenly",
           flexWrap: "wrap"
         }}>
-          {allProducts.map((product) => (
+          {allProducts.map((product,i) => (
             <div style={{
               width: "20%",
               minWidth: "250px",
               height: "auto",
-              boxShadow: "3px 3px 5px #aaa",
+              boxShadow: "3px 3px 5px #aaa, 3px 3px 5px #aaa inset",
               marginBottom: "20px",
               padding: "10px",
               borderRadius: "10px"
 
-            }} onClick={()=> router(`/single-product/${product.id}`)}>
+            }} onClick={()=> router(`/single-product/${product.id}`)} key={i}>
               <p> <b> <span>{product.id}</span>. {product.title}</b></p>
               <p><img src={product.image} style={{
                 width: "100%",
