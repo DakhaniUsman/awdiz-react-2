@@ -21,7 +21,7 @@ import UseReducer from './components/Day-07/UseReducer';
 import NewReducer from './components/Day-07/NewReducer';
 import ReducerPage from './components/Day-07/ReducerPage';
 import ContextCounter from './components/Day-08/ContextCounter';
-import ReduxCounter from './components/Day-09/ReduxCounter';
+// import ReduxCounter from './components/Day-09/ReduxCounter';
 import ReduxSliceCounter from './components/Day-09/ReduxSliceCounter';
 import AllProducts from './components/Day-10/AllProducts';
 import FakeLogin from './components/Day-10/FakeLogin';
