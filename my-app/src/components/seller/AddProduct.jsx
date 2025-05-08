@@ -13,9 +13,11 @@ const AddProduct = () => {
     name: "",
     price: "",
     quantity: "",
-    category: "",
+    category: "clothing",
     image: "",
   });
+
+  console.log(productData,"productData")
 
   const input = {
     width: "90%",
