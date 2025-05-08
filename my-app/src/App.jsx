@@ -51,11 +51,11 @@ function App() {
   //       dispatch(login(tokenFromLocalStorage));
   //     }
   //   }
-  // },[]) 
+  // },[])
   // this will prevent the data of token even when the page is refreshed
-  
+
   const token = JSON.parse(localStorage.getItem("token"));
-  
+
   const getCurrentUser = async() => {
     try{
       const response = await axios.post("http://localhost:8000/api/v1/auth/get-current-user",{
@@ -72,7 +72,7 @@ function App() {
     } catch(error){
       toast.error(error.message)
       console.log(error)
-      
+
     }
   }
 
@@ -112,7 +112,7 @@ function App() {
         <Route path='/new-reducer' element={<NewReducer />} />
         <Route path='/reducer' element={<ReducerPage />} />
         <Route path='/context-counter' element={<ContextCounter />} />
-        <Route path='/redux-counter' element={<ReduxCounter />} />
+        {/* <Route path='/redux-counter' element={<ReduxCounter />} /> */}
         <Route path='/redux-slice-counter' element={<ReduxSliceCounter />} />
         <Route path='/all-products' element={<AllProducts />} />
         <Route path='/fake-login' element={<FakeLogin />} />
