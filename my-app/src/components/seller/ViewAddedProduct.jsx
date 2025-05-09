@@ -10,7 +10,7 @@ const ViewAddedProduct = () => {
   const [products, setProducts] = useState([])
   console.log(products,"products")
   const router = useNavigate();
-  
+
   const getAddedProducts = async() => {
     if (user?.userId && user?.role === "seller"){
       try {
@@ -28,7 +28,7 @@ const ViewAddedProduct = () => {
   }
 
   useEffect(()=>{
-    if(user && user?.role !== "seller" || !user){
+    if((user && user?.role !== "seller") || !user){
       toast.error("You do not have access to this page")
       router("/")
     }
@@ -39,16 +39,16 @@ const ViewAddedProduct = () => {
     <div>
       <h1>View Added Products</h1>
 
-      {products.length > 0 ? (<div className="product-card" style={{
+      {products.length > 0 ? (<div style={{
           position : "relative",
           width: "100%",
           height: "100%",
-          display: "flex",  
+          display: "flex",
           justifyContent: "space-evenly",
           flexWrap: "wrap"
         }}>
           {products.map((product,i) => (
-            <div style={{
+            <div className='product-card' style={{
               width: "20%",
               minWidth: "250px",
               height: "auto",
@@ -57,7 +57,7 @@ const ViewAddedProduct = () => {
               padding: "10px",
               borderRadius: "10px"
 
-            }} onClick={()=> router(`/single-product/${product.id}`)} key={i}>
+            }} onClick={()=> router(`/single-product-page/${product._id}`)} key={i}>
               <img src={product.image} style={{
                 width: "100%",
                 height: "300px",
@@ -73,7 +73,7 @@ const ViewAddedProduct = () => {
         )}
     </div>
 
-    
+
   )
 }
 
