@@ -94,7 +94,7 @@ function App() {
   return (
     <div className="App">
       <Navbar />
-      <Routes>
+      <Routes>  
         <Route path='*' element={<NotFound />}/>
         <Route path='/' element={<Home />} />
         <Route path='/login' element={<Login />} />

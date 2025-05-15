@@ -22,7 +22,7 @@ const UserSlice = createSlice({
             state.user = null;
             toast.success("Logout successfull.");
           },
-
+          
     }
 });
 

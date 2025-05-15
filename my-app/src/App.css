@@ -84,7 +84,7 @@
 }
 
 
-.product-card:hover{
-  scale: 1.025;
-  transition:all 0.5s ease-in ;
+.product-image:hover{
+  scale: 1.035;
+  transition:all 0.3s ease-in ;
 }
