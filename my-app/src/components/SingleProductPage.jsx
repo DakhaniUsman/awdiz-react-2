@@ -113,7 +113,7 @@ const SingleProductPage = () => {
               >
                 <h1>Name : {singleProduct.name}</h1>
                 <h2>Category : {singleProduct.category}</h2>
-                {/* <h2>Seller : {singleProduct.userId.name}</h2> */}
+                <h2>Seller : {singleProduct?.userId?.name}</h2>
                 <p>Price - <span style={{textDecoration : "line-through", fontWeight : "bold"}}>{`${Math.floor(singleProduct.price + 10)}`}</span> {singleProduct.price} </p>
                 <p>Quantity : {singleProduct.quantity}</p>
                 <p>{singleProduct.description}</p>
