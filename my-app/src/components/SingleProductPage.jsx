@@ -1,8 +1,9 @@
 import axios from 'axios';
-import React, { useEffect, useState } from 'react'
+import  { useEffect, useState } from 'react'
 import toast from 'react-hot-toast';
 import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom'
+import {useNavigate} from 'react-router-dom';
 
 const SingleProductPage = () => {
     const { id } = useParams();
@@ -13,6 +14,9 @@ const SingleProductPage = () => {
     const [isPurchasing,setIsPurchasing] = useState(false)
     const user = useSelector((state)=> state.user.user)
     console.log(user,"user")
+
+    const router = useNavigate()
+
 
     const getSingleProduct = async () => {
         try {
@@ -44,6 +48,7 @@ const SingleProductPage = () => {
           console.log(response,"response")
           if(response.data.success){
           // setSeller(response.data.sellerData)
+          router("/cart")
           setLoading(false);  
           }
           toast.success(response.data.message)
@@ -55,6 +60,10 @@ const SingleProductPage = () => {
       }
 
       useEffect(() => {
+        if(!user){
+          toast.error("Please login to continue")
+          router("/")
+        }
         console.log(id);
         getSingleProduct();
       }, [id]);

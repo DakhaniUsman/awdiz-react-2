@@ -35,6 +35,7 @@ import AddProduct from './components/seller/AddProduct';
 import ViewAddedProduct from './components/seller/ViewAddedProduct';
 import NotFound from './components/NotFound';
 import SingleProductPage from './components/SingleProductPage';
+import Cart from './components/Cart';
 
 
 function App() {
@@ -123,6 +124,7 @@ function App() {
         <Route path='/add-product' element={<AddProduct />} />
         <Route path='/view-added-products' element={<ViewAddedProduct />} />
         <Route path='/single-product-page/:id' element={<SingleProductPage />}/>
+        <Route path ="/cart" element={<Cart />}/>
       </Routes>
     </div>
   );

@@ -63,13 +63,25 @@ const ViewAddedProduct = () => {
                 height: "300px",
                 objectFit: "contain"
               }} />
+              <p><b>Name : </b> {product.name}</p>
               <p><b>Category : {product.category}</b></p>
               <p><b>Quantity : {product.quantity}</b></p>
               <p><b>Price : ${product.price}/-</b></p>
             </div>
           ))}
         </div>) : (
-          <h1>Loading...</h1>
+          <>
+          {products?.length !== 0 ? (
+            <>
+            <h1>Loading...</h1>
+            </>
+          ) : (
+            <>
+            <h1>Please Add products First</h1>
+            </>
+          )}
+          
+          </>
         )}
     </div>
 
