@@ -8,6 +8,7 @@ const Cart = () => {
     const router = useNavigate()
     const [products, setProducts] = useState([]);
   const userData = useSelector((state) => state.user.user);
+  const [totalPrice,setTotalPrice] = useState(0);
 
   const getCartProducts = async() => {
     try {
@@ -19,11 +20,29 @@ const Cart = () => {
 
         if (response.data.success){
             setProducts(response.data.products)
+            setTotalPrice(response.data.totalPrice)
         }
     } catch(error){
         console.log(error,"error");
     }
   };
+
+  const removeItem = async(id) => {
+    try {
+      console.log(id,"id")
+        const response = await axios.post("http://localhost:8000/api/v1/user/remove-cart-product",{
+          userId : userData.userId, productId : id  
+        })
+        console.log(response,"response")
+        if (response.data.success){
+            toast.success(response.data.message)
+            getCartProducts()
+        }
+    } catch (error) {
+      console.log(error, "error");
+      toast.error("Failed to remove item")
+    }
+  }
 
   useEffect(() => {
     if (userData?.userId) {
@@ -34,13 +53,23 @@ const Cart = () => {
     <>
       <h1>Cart Page</h1>
 
-            <div>
-        {products?.length > 0 ? (
-          <div
-            
+            <div 
             style={{
               position: "relative",
               width: "100%",
+              height: "100%",
+              display: "flex",
+              justifyContent: "space-evenly",
+              flexWrap: "wrap",
+            }}
+            >
+        {products?.length > 0 ? (
+          <>
+            <div
+            
+            style={{
+              position: "relative",
+              width: "70%",
               height: "100%",
               display: "flex",
               justifyContent: "space-evenly",
@@ -58,7 +87,7 @@ const Cart = () => {
                   padding: "10px",
                   borderRadius: "10px",
                 }}
-                onClick={() => router(`/single-product-page/${product._id}`)}
+                // onClick={() => router(`/single-product-page/${product._id}`)}
                 key={i}
               >
                 <p>
@@ -82,9 +111,22 @@ const Cart = () => {
                 <p>
                   <b>${product.price}/-</b>
                 </p>
+                  <button className="btn" onClick={() => removeItem(product._id)}>Delete</button>
               </div>
             ))}
           </div>
+          <div 
+          style={{
+            width: "20%",
+            height: "auto",
+          }}
+          >
+            <h2>Cart Summary</h2>
+            <p><b>Total Products</b> : {products?.length} </p>
+            <p><b>Total Products</b> : {totalPrice} </p>
+            
+          </div>
+          </>
         ) : (
           <h1>Loading...</h1>
         )}

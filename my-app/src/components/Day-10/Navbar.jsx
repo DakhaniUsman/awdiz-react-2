@@ -40,7 +40,9 @@ const Navbar = () => {
           Welcome, {userData?.name} role : {userData?.role} &nbsp; Logout
         </p>
       )}
-
+      <p onClick={() => router("/cart")} style={{ cursor: "pointer" }}>
+        Cart 
+        </p>
     </div>
   );
 };
