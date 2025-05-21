@@ -9,6 +9,7 @@ const Cart = () => {
     const [products, setProducts] = useState([]);
   const userData = useSelector((state) => state.user.user);
   const [totalPrice,setTotalPrice] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
 
   const getCartProducts = async() => {
     try {
@@ -49,6 +50,13 @@ const Cart = () => {
       getCartProducts();
     }
   },[userData]);
+
+  useEffect(()=> {
+        if(window.screen.width < 768){
+      console.log("mobile")
+      setIsMobile(true)
+    }
+  })
   return (
     <>
       <h1>Cart Page</h1>
@@ -60,8 +68,13 @@ const Cart = () => {
               height: "100%",
               display: "flex",
               justifyContent: "space-evenly",
+              alignItems:  isMobile ? "center" : "start",
               flexWrap: "wrap",
-            }}
+              flexDirection: isMobile ? "column-reverse" : "row"
+              
+            }
+            
+        }
             >
         {products?.length > 0 ? (
           <>
@@ -70,6 +83,7 @@ const Cart = () => {
             style={{
               position: "relative",
               width: "70%",
+              minWidth : "500px",
               height: "100%",
               display: "flex",
               justifyContent: "space-evenly",
@@ -118,12 +132,15 @@ const Cart = () => {
           <div 
           style={{
             width: "20%",
+            minWidth: "250px",
             height: "auto",
+            boxShadow: "3px 3px 5px #aaa, 3px 3px 5px #aaa inset",
+            marginBottom : isMobile ? "20px": "0px"
           }}
           >
             <h2>Cart Summary</h2>
             <p><b>Total Products</b> : {products?.length} </p>
-            <p><b>Total Products</b> : {totalPrice} </p>
+            <p><b>Total Price</b> : {totalPrice} </p>
             
           </div>
           </>
